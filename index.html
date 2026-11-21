@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eddie's Pizza – Faturimi</title>
+<link rel="icon" href="logo.png">
+<script src="xlsx.full.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login">
+ <img src="logo.png" alt="Eddie's Pizza">
+ <form id="lf"><input id="lu" type="email" placeholder="Email" autocomplete="username"><input id="lp" type="password" placeholder="Fjalëkalimi" autocomplete="current-password"><button>Hyr</button><small id="le" style="color:var(--r)"></small></form>
+</div>
+<div id="app" hidden>
+<header><img src="logo.png" alt="Eddie's Pizza">
+<nav id="nav"><button data-s="new">Faturë e re</button><button data-s="inv">Faturat</button><button data-s="rep">Raporte</button><button data-s="prod">Produktet</button><button data-s="cfg">Konfigurimi</button></nav>
+<button class="o" id="out">Dil</button></header>
+<main>
+<section id="new"><div class="g">
+ <div class="card"><h2>Produktet</h2><input id="q" placeholder="Kërko produkt…" style="width:100%"><button id="np">➕ Produkt i ri</button><div class="chips" id="cats"></div><div class="pg" id="pg"></div></div>
+ <div class="card"><h2 id="ntitle">Fatura</h2>
+  <div class="row"><label>Data & ora<input type="datetime-local" id="fd"></label><label>Klienti / Tavolina<input id="fc"></label><label>Pagesa<select id="fp"><option>Para në dorë</option><option>Kartë</option><option>Transfertë</option></select></label></div>
+  <div class="sc"><table><thead><tr><th>Produkti</th><th>Sasia</th><th>Çmimi</th><th>Total</th><th></th></tr></thead><tbody id="cart"></tbody></table></div>
+  <div class="row" style="margin-top:8px"><label>Zbritje (L)<input type="number" id="fdisc" value="0" min="0"></label><label>Formati i printimit<select id="ffmt"><option value="80">Termik kase 80mm</option><option value="58">Termik kase 58mm</option><option value="n">Letër normale</option><option value="a4">A4 (faturë e plotë)</option></select></label></div>
+  <div class="tot" id="tt">0 L</div>
+  <div class="row"><button id="sv">Ruaj</button><button id="svp">Ruaj & printo</button><button class="o" id="nw">Faturë e re</button></div></div>
+</div></section>
+<section id="inv"><div class="card"><h2>Të gjitha faturat</h2>
+ <div class="row"><label>Nga<input type="date" id="ia"></label><label>Deri<input type="date" id="ib"></label><button id="ifl">Filtro</button><button class="o" id="iex">Eksporto Excel</button>
+ <label>Importo Excel<input type="file" id="iim" accept=".xlsx,.xls,.csv"></label></div>
+ <div class="sc"><table><thead><tr><th>Nr</th><th>Data</th><th>Klienti</th><th>Pagesa</th><th>Total</th><th></th></tr></thead><tbody id="il"></tbody></table></div></div></section>
+<section id="rep"><div class="card"><h2>Raporte shitjesh & analizë</h2>
+ <div class="row"><label>Nga<input type="date" id="ra"></label><label>Deri<input type="date" id="rb"></label><button id="rg">Gjenero</button><button class="o" id="rex">Eksporto raportin</button></div></div>
+ <div id="ro"></div></section>
+<section id="prod"><div class="card"><h2>Produktet & çmimet bazë</h2>
+ <div class="row"><label>Emri<input id="pn"></label><label>Kategoria<input id="pc" list="cl"></label><label>Çmimi<input id="pp" type="number"></label><button id="pa">Shto produkt</button></div><datalist id="cl"></datalist>
+ <div class="sc"><table><thead><tr><th>Emri</th><th>Kategoria</th><th>Çmimi</th><th></th></tr></thead><tbody id="pl"></tbody></table></div></div></section>
+<section id="cfg"><div class="card"><h2>Konfigurimi</h2>
+ <div class="row"><label>Emri i biznesit<input id="c_name"></label><label>Adresa<input id="c_addr"></label><label>Telefoni<input id="c_tel"></label><label>NIPT<input id="c_nipt"></label><label>TVSH % (e përfshirë)<input id="c_tvsh" type="number" min="0"></label></div>
+ <div class="row"><label>Formati bazë i printimit<select id="c_fmt"><option value="80">Termik 80mm</option><option value="58">Termik 58mm</option><option value="n">Letër normale</option><option value="a4">A4</option></select></label><label>Shënim në fund<input id="c_foot"></label></div>
+ <button id="cs">Ruaj konfigurimin</button></div>
+ <div class="card"><h3>Kopje rezervë</h3><div class="row"><button class="o" id="bk">Shkarko kopjen (JSON)</button><label>Rikthe kopjen<input type="file" id="bki" accept=".json"></label><button class="o" id="del">Fshi të gjitha faturat</button></div>
+ <small>Të dhënat ruhen në shfletuesin e kësaj pajisjeje. Bëj kopje rezervë rregullisht.</small></div></section>
+</main></div>
+<div id="m"><div id="mb"></div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="cloud.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
