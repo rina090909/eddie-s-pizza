@@ -1,9 +1,8 @@
-// Ngjit këtu konfigurimin që të jep Firebase (Project settings > Your apps > Web app)
 const firebaseConfig = {
-  apiKey: "PASTE",
-  authDomain: "PASTE",
-  projectId: "PASTE",
-  storageBucket: "PASTE",
-  messagingSenderId: "PASTE",
-  appId: "PASTE"
+  apiKey: "AIzaSyA4GhrsYjaVGx-oEHdxXlNZv76z6dmTaHE",
+  authDomain: "eddie-s-pizza.firebaseapp.com",
+  projectId: "eddie-s-pizza",
+  storageBucket: "eddie-s-pizza.firebasestorage.app",
+  messagingSenderId: "23713705707",
+  appId: "1:23713705707:web:f1acae49c184b0ad8458ae"
 };
